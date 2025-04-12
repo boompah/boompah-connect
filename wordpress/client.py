@@ -19,7 +19,8 @@ class WordPressClient(APIClient):
         base_url: str,
         username: Optional[str] = None,
         password: Optional[str] = None,
-        auth_token: Optional[str] = None
+        auth_token: Optional[str] = None,
+        user_agent: Optional[str] = None
     ):
         """
         Initialize the WordPress API client.
@@ -29,7 +30,10 @@ class WordPressClient(APIClient):
             username: WordPress username for authentication
             password: WordPress password for authentication
             auth_token: JWT authentication token (if using JWT authentication)
+            user_agent: Custom user agent string (recommended for security when using application passwords)
         """
+        # Initialize with custom user agent if provided
+        self.user_agent = user_agent
         super().__init__(base_url)
         
         # Set up authentication
@@ -54,6 +58,11 @@ class WordPressClient(APIClient):
         """
         headers = super()._get_default_headers()
         headers["Content-Type"] = "application/json"
+        
+        # Set custom user agent if provided (for security best practices with application passwords)
+        if self.user_agent:
+            headers["User-Agent"] = self.user_agent
+            
         return headers
     
     # Posts

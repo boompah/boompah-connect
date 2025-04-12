@@ -51,6 +51,34 @@ posts = wp_client.get_posts(limit=5)
 print(posts)
 ```
 
+## Project Templates
+
+### WordPress Project Template
+
+This repository includes a ready-to-use template for creating new projects that integrate with WordPress using the REST API. The template provides a complete project structure with all the necessary files and examples.
+
+#### Creating a New WordPress Project
+
+You can create a new WordPress project using the provided script:
+
+```bash
+python create_wordpress_project.py my_wordpress_project
+```
+
+Or manually copy the template:
+
+```bash
+cp -r templates/wordpress_project/ /path/to/your/new-project
+cd /path/to/your/new-project
+```
+
+The template includes:
+- Pre-configured WordPress API client
+- Environment-based configuration
+- Example scripts for common operations
+- Interactive demo application
+- Comprehensive documentation
+
 ## For AI Assistants
 
 This library is designed with AI usage in mind. Each API module follows a consistent pattern:
